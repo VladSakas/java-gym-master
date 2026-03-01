@@ -3,15 +3,26 @@ package ru.yandex.practicum.gym;
 import java.util.Objects;
 
 public class TimeOfDay implements Comparable<TimeOfDay> {
-
-    //часы (от 0 до 23)
     private int hours;
-    //минуты (от 0 до 59)
     private int minutes;
 
     public TimeOfDay(int hours, int minutes) {
-        this.hours = hours;
-        this.minutes = minutes;
+
+        if (hours > 23) {
+            this.hours = 23;
+        } else if (hours < 0) {
+            this.hours = 0;
+        } else {
+            this.hours = hours;
+        }
+
+        if (minutes > 59) {
+            this.minutes = 59;
+        } else if (minutes < 0) {
+            this.minutes = 0;
+        } else {
+            this.minutes = minutes;
+        }
     }
 
     @Override
@@ -39,5 +50,10 @@ public class TimeOfDay implements Comparable<TimeOfDay> {
 
     public int getMinutes() {
         return minutes;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%02d:%02d", hours, minutes);
     }
 }
