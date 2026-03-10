@@ -7,7 +7,7 @@ import java.util.*;
 public class TimetableTest {
 
     @Test
-    void testGetTrainingSessionsForDaySingleSession() {
+    public void testGetTrainingSessionsForDaySingleSession() {
         Timetable timetable = new Timetable();
 
         Group group = new Group("Акробатика для детей", Age.CHILD, 60);
@@ -24,7 +24,7 @@ public class TimetableTest {
     }
 
     @Test
-    void testGetTrainingSessionsForDayMultipleSessions() {
+    public void testGetTrainingSessionsForDayMultipleSessions() {
         Timetable timetable = new Timetable();
 
         Coach coach = new Coach("Васильев", "Николай", "Сергеевич");
@@ -58,7 +58,7 @@ public class TimetableTest {
     }
 
     @Test
-    void testGetTrainingSessionsForDayAndTime() {
+    public void testGetTrainingSessionsForDayAndTime() {
         Timetable timetable = new Timetable();
 
         Group group = new Group("Акробатика для детей", Age.CHILD, 60);
@@ -80,7 +80,7 @@ public class TimetableTest {
     //новые тесты
     //ну например две тренировки в один день в одно время
     @Test
-    void testAddSessionsAtSameTime() {
+    public void testAddSessionsAtSameTime() {
         Timetable timetable = new Timetable();
 
         Coach coach = new Coach("Васильев", "Николай", "Сергеевич");
@@ -105,7 +105,7 @@ public class TimetableTest {
 
     //проверим, что везде пусто
     @Test
-    void testEmptyTimetable() {
+    public void testEmptyTimetable() {
         Timetable timetable = new Timetable();
 
         Assertions.assertTrue(timetable.getTrainingSessionsForDay(DayOfWeek.MONDAY).isEmpty());
@@ -115,7 +115,7 @@ public class TimetableTest {
 
     //тренировки в разных днях не перемешиваются
     @Test
-    void testDifferentDaysDontMix() {
+    public void testDifferentDaysDontMix() {
         // Тест проверяет, что тренировки для разных дней не перемешиваются
         Timetable timetable = new Timetable();
 
@@ -134,7 +134,7 @@ public class TimetableTest {
 
     //тест метода на одном тренере
     @Test
-    void testGetCountByCoachesOneCoach() {
+    public void testGetCountByCoachesOneCoach() {
         Timetable timetable = new Timetable();
 
         Coach coach = new Coach("Иванов", "Иван", "Иванович");
@@ -148,13 +148,13 @@ public class TimetableTest {
         List<CounterOfTrainings> result = timetable.getCountByCoaches();
 
         Assertions.assertEquals(1, result.size());
-        Assertions.assertEquals(2, result.get(0).getCount());
-        Assertions.assertEquals(coach, result.get(0).getCoach());
+        Assertions.assertEquals(2, result.getFirst().getCount());
+        Assertions.assertEquals(coach, result.getFirst().getCoach());
     }
 
     //пустое расписание
     @Test
-    void testGetCountByCoachesEmptyTimetable() {
+    public void testGetCountByCoachesEmptyTimetable() {
         Timetable timetable = new Timetable();
 
         List<CounterOfTrainings> result = timetable.getCountByCoaches();
@@ -165,7 +165,7 @@ public class TimetableTest {
 
     //несколько тренеров с разным количеством занятий
     @Test
-    void testGetCountByCoaches_DifferentCounts() {
+    public void testGetCountByCoaches_DifferentCounts() {
         Timetable timetable = new Timetable();
 
         Coach coach1 = new Coach("Иванов", "Иван", "Иванович");
